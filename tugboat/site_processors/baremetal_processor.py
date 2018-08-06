@@ -45,7 +45,7 @@ class BaremetalProcessor:
                     autoescape=False,
                     loader=FileSystemLoader('templates/baremetal'),
                     trim_blocks=True)
-            file_path = "pegleg_manifests/baremetal"
+            file_path = "pegleg_manifests/baremetal/"
             directory = os.path.dirname(file_path)
             if not os.path.exists(directory):
                 os.makedirs(directory)
@@ -54,7 +54,7 @@ class BaremetalProcessor:
                     '{}.yaml.j2'.format(template))
                 for rack in self.baremetal_data:
                     data = self.baremetal_data[rack]
-                    outfile = '{}/{}.yaml'.format(file_path, rack)
+                    outfile = '{}{}.yaml'.format(file_path, rack)
                     print('Rendering data for {}'.format(outfile))
                     try:
                         out = open(outfile, "w")

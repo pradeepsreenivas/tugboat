@@ -45,7 +45,7 @@ class PkiProcessor:
                     autoescape=False,
                     loader=FileSystemLoader('templates/pki'),
                     trim_blocks=True)
-            file_path = "pegleg_manifests/pki"
+            file_path = "pegleg_manifests/pki/"
             directory = os.path.dirname(file_path)
             if not os.path.exists(directory):
                 os.makedirs(directory)
@@ -53,10 +53,10 @@ class PkiProcessor:
                 '{}.yaml.j2'.format(template))
             for rack in self.baremetal_data:
                 data = self.baremetal_data[rack]
-                outfile = '{}/{}.yaml'.format(file_path, rack)
+                outfile = '{}{}.yaml'.format(file_path, rack)
                 print('Rendering data for {}'.format(outfile))
-            #data = self.baremetal_data[rack]
-            outfile = '{}/{}.yaml'.format(file_path, "pki-catalogue")
+            # data = self.baremetal_data[rack]
+            outfile = '{}{}.yaml'.format(file_path, "pki-catalogue")
             print('Rendering data for {}'.format(outfile))
             try:
                 out = open(outfile, "w")
